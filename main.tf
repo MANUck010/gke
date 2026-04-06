@@ -20,11 +20,11 @@ module "subnets" {
   network_id                    = module.vpc.vpc_id
   subnets                       = var.subnets
   region                        = var.region
-  alias_subnet_name             = var.alias_subnet_name
-  alias_subnet_primary_ip_range = var.alias_subnet_primary_ip_range
-  subnet_name_alias_ip_range_1  = var.subnet_name_alias_ip_range_1
+  gke_subnet_name               = var.gke_subnet_name
+  gke_primary_ip_range          = var.gke_primary_ip_range
+  pod_range                     = var.pod_range
   alias_ip_cidr_range_1         = var.alias_ip_cidr_range_1
-  subnet_name_alias_ip_range_2  = var.subnet_name_alias_ip_range_2
+  service_range                 = var.service_range
   alias_ip_cidr_range_2         = var.alias_ip_cidr_range_2
 }
 
@@ -59,6 +59,29 @@ module "compute_instance" {
   network_id    = module.vpc.vpc_id
   subnetwork_id = module.subnets.subnets["test-subnet"].self_link
   labels        = var.labels
+}
+
+###################################################
+### GKE Cluster configuration####################
+###################################################
+
+module "gke" {
+  source = "./modules/compute/gke"
+
+  project_id   = var.project_id
+  region       = var.region
+  cluster_name = var.cluster_name  
+
+  network    = module.vpc.network_name
+  subnetwork = module.subnets.subnet_name
+
+  pods_range     = module.subnets.pods_range_name
+  services_range = module.subnets.services_range_name
+
+  master_cidr = "172.16.0.0/28"
+
+  node_service_account = var.node_service_account
+
 }
 
 

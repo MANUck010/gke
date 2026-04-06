@@ -49,14 +49,21 @@ variable "alias_subnet_name" {
   type        = string
 }
 
-variable "alias_subnet_primary_ip_range" {
-  description = "The primary IP CIDR range for the subnetwork with private secondary IP range."
+variable "gke_subnet_name" {
+  description = "The name of the GKE subnetwork with private secondary IP range to create."
   type        = string
 
 }
 
-variable "subnet_name_alias_ip_range_1" {
-  description = "The name of the first secondary IP range for the subnetwork with private secondary IP range."
+
+variable "gke_primary_ip_range" {
+  description = "The primary IP CIDR range for the GKE subnetwork with private secondary IP range."
+  type        = string
+
+}
+
+variable "pod_range" {
+  description = "The name of the first secondary IP range for the GKE subnetwork with private secondary IP range."
   type        = string
 
 }
@@ -67,8 +74,8 @@ variable "alias_ip_cidr_range_1" {
 
 }
 
-variable "subnet_name_alias_ip_range_2" {
-  description = "The name of the second secondary IP range for the subnetwork with private secondary IP range."
+variable "service_range" {
+  description = "The name of the second secondary IP range for the GKE subnetwork with private secondary IP range."
   type        = string
 
 }
@@ -137,4 +144,17 @@ variable "machine_type" {
 variable "labels" {
   description = "The labels to apply to the compute instance."
   type        = map(string)
+}
+
+
+variable "cluster_name" {
+  description = "The name of the GKE cluster to create."
+  type        = string
+}
+
+variable "node_service_account" {
+  description = "The service account to use for the nodes in the GKE cluster."
+  type        = string
+  default     = null
+  
 }

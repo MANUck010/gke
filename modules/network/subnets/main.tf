@@ -17,20 +17,20 @@ resource "google_compute_subnetwork" "subnet-1" {
 }
 
 
-resource "google_compute_subnetwork" "network-with-private-secondary-ip-range" {
-  name          = var.alias_subnet_name
+resource "google_compute_subnetwork" "gke-subnet" {
+  name          = var.gke_subnet_name
   region        = var.region
   network       = var.network_id
   project       = var.project_id
-  ip_cidr_range = var.alias_subnet_primary_ip_range
+  ip_cidr_range = var.gke_primary_ip_range
 
   secondary_ip_range {
-    range_name    = var.subnet_name_alias_ip_range_1
+    range_name    = var.pod_range
     ip_cidr_range = var.alias_ip_cidr_range_1
   }
 
   secondary_ip_range {
-    range_name    = var.subnet_name_alias_ip_range_2
+    range_name    = var.service_range
     ip_cidr_range = var.alias_ip_cidr_range_2
   }
 }

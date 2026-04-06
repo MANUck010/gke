@@ -34,7 +34,7 @@ steps:
     args:
       - cp
       - tfplan
-      - gs://cb-tf-plan-out/tfplan-${COMMIT_SHA}
+      - gs://cb-tf-plan-out/gke-plan/tfplan-${COMMIT_SHA}
 
 timeout: "1200s"
 

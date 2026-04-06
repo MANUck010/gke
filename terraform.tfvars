@@ -22,11 +22,11 @@ subnets = {
   }
 
 }
-alias_subnet_name             = "test-subnet-alias"
-alias_subnet_primary_ip_range = "10.2.248.0/22"
-subnet_name_alias_ip_range_1  = "test-subnet-alias-ip-range-1"
+gke_subnet_name = "gke-primary-subnet"            
+gke_primary_ip_range = "10.2.248.0/22"
+pod_range  = "pod-range"
 alias_ip_cidr_range_1         = "10.2.252.0/23"
-subnet_name_alias_ip_range_2  = "test-subnet-alias-ip-range-2"
+service_range                 = "service-range"
 alias_ip_cidr_range_2         = "10.2.254.0/23"
 
 
@@ -80,3 +80,7 @@ image         = "debian-cloud/debian-11"
 labels = {
   "env" = "test"
 }
+
+cluster_name = "test-gke-cluster"
+
+node_service_account = "gke-node-sa"
