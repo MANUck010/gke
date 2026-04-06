@@ -47,19 +47,19 @@ module "firewall_rules" {
 # Instances
 #############
 
-module "compute_instance" {
-  source = "./modules/compute/compute_instance"
+# module "compute_instance" {
+#   source = "./modules/compute/compute_instance"
 
-  project_id    = var.project_id
-  instance_name = var.instance_name
-  machine_type  = var.machine_type
-  zone          = var.zone
-  tags          = var.tags
-  image         = var.image
-  network_id    = module.vpc.vpc_id
-  subnetwork_id = module.subnets.subnets["test-subnet"].self_link
-  labels        = var.labels
-}
+#   project_id    = var.project_id
+#   instance_name = var.instance_name
+#   machine_type  = var.machine_type
+#   zone          = var.zone
+#   tags          = var.tags
+#   image         = var.image
+#   network_id    = module.vpc.vpc_id
+#   subnetwork_id = module.subnets.subnets["test-subnet"].self_link
+#   labels        = var.labels
+# }
 
 ###################################################
 ### GKE Cluster configuration####################
