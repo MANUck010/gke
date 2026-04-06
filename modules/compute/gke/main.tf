@@ -11,6 +11,9 @@ resource "google_container_cluster" "primary" {
 
   networking_mode = "VPC_NATIVE"
 
+  deletion_protection = false
+  
+
   ip_allocation_policy {
     cluster_secondary_range_name  = var.pods_range
     services_secondary_range_name = var.services_range
