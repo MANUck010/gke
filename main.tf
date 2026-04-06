@@ -72,7 +72,7 @@ module "gke" {
   region       = var.region
   cluster_name = var.cluster_name  
 
-  network    = module.vpc.network_name
+  network    = module.vpc.vpc_name
   subnetwork = module.subnets.subnet_name
 
   pods_range     = module.subnets.pods_range_name
