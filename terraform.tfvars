@@ -23,11 +23,11 @@ subnets = {
 
 }
 gke_subnet_name = "gke-primary-subnet"            
-gke_primary_ip_range = "10.2.248.0/22"
+gke_primary_ip_range = "10.10.0.0/16"
 pod_range  = "pod-range"
-alias_ip_cidr_range_1         = "10.2.252.0/23"
+alias_ip_cidr_range_1         = "10.20.0.0/16"
 service_range                 = "service-range"
-alias_ip_cidr_range_2         = "10.2.254.0/23"
+alias_ip_cidr_range_2         = "10.30.0.0/20"
 
 
 allow_firewall_rules = {
