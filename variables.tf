@@ -44,10 +44,7 @@ variable "region" {
 
 }
 
-variable "alias_subnet_name" {
-  description = "The name of the subnetwork with private secondary IP range to create."
-  type        = string
-}
+
 
 variable "gke_subnet_name" {
   description = "The name of the GKE subnetwork with private secondary IP range to create."
