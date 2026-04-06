@@ -1,7 +1,7 @@
 terraform {
   backend "gcs" {
     bucket      = "tf-state-buk"
-    prefix      = "test/state/cb"
+    prefix      = "test/state/gke"
     
   }
 }
