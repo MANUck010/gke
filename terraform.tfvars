@@ -81,6 +81,6 @@ labels = {
   "env" = "test"
 }
 
-cluster_name = "test-gke-cluster"
+cluster_name = "test-gke-cluster-1"
 
 node_service_account = "gke-node-sa"
