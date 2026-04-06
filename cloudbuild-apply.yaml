@@ -1,0 +1,23 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+steps:
+  # Download tfplan from GCS
+  - name: gcr.io/cloud-builders/gsutil
+    args:
+      - cp
+      - gs://cb-tf-plan-out/tfplan-${COMMIT_SHA}
+      - tfplan
+
+  - name: hashicorp/terraform:1.6.6
+    entrypoint: sh
+    args: ["-c", "terraform init"]
+
+  # - name: hashicorp/terraform:1.6.6
+  #   entrypoint: sh
+  #   args: ["-c", "terraform apply tfplan"]
+
+  - name: hashicorp/terraform:1.6.6
+    entrypoint: sh
+    args: ["-c", "terraform destroy -auto-approve"]
+    

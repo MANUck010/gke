@@ -1,0 +1,40 @@
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+steps:
+  # 1. Terraform Init
+  - name: hashicorp/terraform:1.6.6
+    id: init
+    entrypoint: sh
+    args:
+      - -c
+      - |
+        terraform init
+
+  # 2. Terraform Validate
+  - name: hashicorp/terraform:1.6.6
+    id: validate
+    entrypoint: sh
+    args:
+      - -c
+      - |
+        terraform validate
+
+  # 3. Terraform Plan
+  - name: hashicorp/terraform:1.6.6
+    id: plan
+    entrypoint: sh
+    args:
+      - -c
+      - |
+        terraform plan -out=tfplan
+
+  # Upload tfplan to GCS
+  - name: gcr.io/cloud-builders/gsutil
+    args:
+      - cp
+      - tfplan
+      - gs://cb-tf-plan-out/tfplan-${COMMIT_SHA}
+
+timeout: "1200s"
+
