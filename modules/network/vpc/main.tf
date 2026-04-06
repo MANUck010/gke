@@ -1,6 +1,7 @@
 /******************************************
 	VPC configuration
  *****************************************/
+ 
 resource "google_compute_network" "network" {
   provider                = google-beta
   name                    = var.network_name
