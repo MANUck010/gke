@@ -75,8 +75,16 @@ module "gke" {
   network    = module.vpc.vpc_name
   subnetwork = module.subnets.subnet_name
 
+  min_node_count = var.min_node_count
+  max_node_count = var.max_node_count
+
+  labels = var.labels
+  tags   = var.tags
+
   pods_range     = module.subnets.pods_range_name
   services_range = module.subnets.services_range_name
+
+  release_channel = var.release_channel
 
   master_cidr = "172.16.0.0/28"
 

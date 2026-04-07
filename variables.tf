@@ -155,3 +155,34 @@ variable "node_service_account" {
   default     = null
   
 }
+
+variable "release_channel" {
+  description = "The release channel to use for the GKE cluster (e.g., 'REGULAR', 'RAPID', 'STABLE')."
+  type        = string
+  default     = "REGULAR"
+  
+}
+
+variable "min_node_count" {
+  description = "The minimum number of nodes to create in the GKE cluster for autoscaling."
+  type        = number
+  default     = 1
+}
+
+variable "max_node_count" {
+  description = "The maximum number of nodes to create in the GKE cluster for autoscaling."
+  type        = number
+  default     = 3
+}
+
+variable "labels" {
+  description = "values to apply to the nodes in the GKE cluster as labels."
+  type    = map(string)
+  default = {}
+}
+
+variable "tags" {
+  description = "values to apply to the nodes in the GKE cluster as tags."
+  type    = list(string)
+  default = []
+}
