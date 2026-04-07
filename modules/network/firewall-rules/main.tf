@@ -15,6 +15,7 @@ resource "google_compute_firewall" "allow_rules" {
   }
 
 
+
   source_ranges = each.value.direction == "INGRESS" ? each.value.source_ranges : null
   target_tags   = each.value.target_tags
 }
