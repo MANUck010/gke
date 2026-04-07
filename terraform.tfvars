@@ -60,6 +60,7 @@ deny_firewall_rules = {
     target_tags   = ["ssh-server"]
     priority      = 900
   },
+  
   "test-fw-rule-4" = {
     name          = "test-fw-rule-4"
     direction     = "EGRESS"
