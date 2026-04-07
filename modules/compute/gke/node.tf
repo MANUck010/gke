@@ -25,7 +25,7 @@ resource "google_container_node_pool" "nodes" {
       "https://www.googleapis.com/auth/cloud-platform"
     ]
 
-    labels = var.labels
-    tags   = var.tags
+    labels = var.gke_labels
+    tags   = var.gke_tags
   }
 }

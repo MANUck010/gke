@@ -175,13 +175,13 @@ variable "max_node_count" {
   default     = 3
 }
 
-variable "labels" {
+variable "gke_labels" {
   description = "values to apply to the nodes in the GKE cluster as labels."
   type    = map(string)
   default = {}
 }
 
-variable "tags" {
+variable "gke_tags" {
   description = "values to apply to the nodes in the GKE cluster as tags."
   type    = list(string)
   default = []
